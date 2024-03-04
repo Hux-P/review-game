@@ -23,16 +23,16 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
-        .term, .definition {
+        .term {
             display: inline-block;
             padding: 10px;
             margin: 10px;
-            background-color: #ff6b6b; /* Pink color */
             color: #fff;
             border-radius: 5px;
             cursor: pointer;
             user-select: none;
             text-transform: lowercase;
+            transition: background-color 0.3s ease;
         }
 
         .dropzone {
@@ -42,6 +42,16 @@
             border-radius: 10px;
             min-height: 100px;
         }
+
+        /* Colors related to emojis */
+        .term[data-emoji="🌡️"] { background-color: #ffae42; } /* Temperature */
+        .term[data-emoji="🔥"] { background-color: #ff6b6b; } /* Heat & others */
+        .term[data-emoji="❄️"] { background-color: #4cb3d4; } /* Kelvin */
+        .term[data-emoji="📚"] { background-color: #7f8fa6; } /* Laws of thermodynamics */
+        .term[data-emoji="🏠"] { background-color: #5e76c3; } /* Heating system */
+        .term[data-emoji="☀️"] { background-color: #f9ca24; } /* Solar heating */
+        .term[data-emoji="💨"] { background-color: #6ab04c; } /* Forced air */
+
     </style>
 </head>
 <body>
@@ -49,10 +59,22 @@
         <h2>thermal energy matching game</h2>
         
         <!-- Drag and drop terms -->
-        <div class="term" id="term1" draggable="true" ondragstart="drag(event)">temperature</div>
-        <div class="term" id="term2" draggable="true" ondragstart="drag(event)">thermal expansion</div>
-        <div class="term" id="term3" draggable="true" ondragstart="drag(event)">kinetic energy</div>
-        <!-- ... (remaining terms) ... -->
+        <div class="term" id="term1" data-emoji="🌡️" draggable="true" ondragstart="drag(event)">Temperature</div>
+        <div class="term" id="term2" data-emoji="🌡️" draggable="true" ondragstart="drag(event)">Thermal expansion</div>
+        <div class="term" id="term3" data-emoji="🔥" draggable="true" ondragstart="drag(event)">Kinetic energy</div>
+        <div class="term" id="term4" data-emoji="❄️" draggable="true" ondragstart="drag(event)">Kelvin</div>
+        <div class="term" id="term5" data-emoji="🔥" draggable="true" ondragstart="drag(event)">Thermal energy</div>
+        <div class="term" id="term6" data-emoji="🔥" draggable="true" ondragstart="drag(event)">Heat</div>
+        <div class="term" id="term7" data-emoji="🔥" draggable="true" ondragstart="drag(event)">Specific heat</div>
+        <div class="term" id="term8" data-emoji="🔥" draggable="true" ondragstart="drag(event)">Conduction</div>
+        <div class="term" id="term9" data-emoji="🔥" draggable="true" ondragstart="drag(event)">Convection</div>
+        <div class="term" id="term10" data-emoji="🔥" draggable="true" ondragstart="drag(event)">Radiation</div>
+        <div class="term" id="term11" data-emoji="📚" draggable="true" ondragstart="drag(event)">1st Law of thermodynamics</div>
+        <div class="term" id="term12" data-emoji="📚" draggable="true" ondragstart="drag(event)">2nd Law of thermodynamics</div>
+        <div class="term" id="term13" data-emoji="🏠" draggable="true" ondragstart="drag(event)">Heating system how it works</div>
+        <div class="term" id="term14" data-emoji="☀️" draggable="true" ondragstart="drag(event)">Solar heating how it works</div>
+        <div class="term" id="term15" data-emoji="💨" draggable="true" ondragstart="drag(event)">Forced air how it works</div>
+
         <div class="dropzone" id="dropzone1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
         <div class="dropzone" id="dropzone2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
         <div class="dropzone" id="dropzone3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
