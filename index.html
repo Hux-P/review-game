@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thermal Energy Matching Game</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap">
+    <style>
+        body {
+            font-family: 'Just Another Hand', cursive;
+            background-color: #1f1f1f;
+            color: #fff;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #363636;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .term, .definition {
+            display: inline-block;
+            padding: 10px;
+            margin: 10px;
+            background-color: #ff6b6b; /* Pink color */
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .dropzone {
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px dashed #ff6b6b; /* Pink color */
+            border-radius: 10px;
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Thermal Energy Matching Game</h2>
+        
+        <div class="term" id="term1" draggable="true">Temperature</div>
+        <div class="term" id="term2" draggable="true">Thermal expansion</div>
+        <div class="term" id="term3" draggable="true">Kinetic energy</div>
+        <div class="term" id="term4" draggable="true">Kelvin</div>
+        <div class="term" id="term5" draggable="true">Thermal energy</div>
+        <div class="term" id="term6" draggable="true">Heat</div>
+        <div class="term" id="term7" draggable="true">Specific heat</div>
+        <div class="term" id="term8" draggable="true">Conduction</div>
+        <div class="term" id="term9" draggable="true">Convection</div>
+        <div class="term" id="term10" draggable="true">Radiation</div>
+        <div class="term" id="term11" draggable="true">1st Law of thermodynamics</div>
+        <div class="term" id="term12" draggable="true">2nd Law of thermodynamics</div>
+        <div class="term" id="term13" draggable="true">Heating system how it works</div>
+        <div class="term" id="term14" draggable="true">Solar heating how it works</div>
+        <div class="term" id="term15" draggable="true">Forced air how it works</div>
+
+        <div class="dropzone" id="dropzone1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="dropzone" id="dropzone2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="dropzone" id="dropzone3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+
+    <script>
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            var draggedElement = document.getElementById(data);
+            var dropzone = event.target;
+
+            // Append the dragged term to the dropzone
+            dropzone.appendChild(draggedElement);
+        }
+    </script>
+</body>
+</html>
