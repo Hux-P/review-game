@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:wght@700&display=swap">
     <style>
         body {
-            font-family: 'Arimo', sans-serif;
+            font-family: Arial, sans-serif;
             background-color: #1f1f1f;
             color: #fff;
             text-align: center;
@@ -70,6 +70,8 @@
     </div>
 
     <script>
+        var selectedTerms = [];
+
         function allowDrop(event) {
             event.preventDefault();
         }
@@ -84,8 +86,54 @@
             var draggedElement = document.getElementById(data);
             var dropzone = event.target;
 
-            // Append the dragged term to the dropzone
-            dropzone.appendChild(draggedElement);
+            // If dropzone is empty, add the dragged term
+            if (dropzone.children.length === 0) {
+                dropzone.appendChild(draggedElement);
+                selectedTerms.push(data);
+            } else {
+                // If dropzone is not empty, reset by dragging the terms back
+                resetDropzones();
+            }
+
+            // Check for a match when two terms are selected
+            if (selectedTerms.length === 2) {
+                checkMatch();
+            }
+        }
+
+        function resetDropzones() {
+            selectedTerms.forEach(termId => {
+                var termElement = document.getElementById(termId);
+                termElement.parentNode.removeChild(termElement);
+            });
+            selectedTerms = [];
+        }
+
+        function checkMatch() {
+            if (selectedTerms.length === 2) {
+                var term1 = document.getElementById(selectedTerms[0]).textContent;
+                var term2 = document.getElementById(selectedTerms[1]).textContent;
+
+                if (term1 === term2) {
+                    alert('Matched!'); // You can customize this part as needed
+                    resetDropzones();
+                } else {
+                    notifyUser();
+                    resetDropzones();
+                }
+            }
+        }
+
+        function notifyUser() {
+            if ('Notification' in window) {
+                Notification.requestPermission().then(function (permission) {
+                    if (permission === 'granted') {
+                        var notification = new Notification('wrong match!', {
+                            body: 'try again! :)',
+                        });
+                    }
+                });
+            }
         }
     </script>
 </body>
